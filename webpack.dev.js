@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-    entry: './src/client/index.js',
+    entry: ["regenerator-runtime/runtime.js",'./src/client/index.js'],
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
@@ -21,6 +21,10 @@ module.exports = {
             }
         ]
     },
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
@@ -34,6 +38,15 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
-    ]
+        }),
+        
+    ],
+    node: {
+        fs: 'empty'
+      },
+     
+      
+    
+
+ 
 }

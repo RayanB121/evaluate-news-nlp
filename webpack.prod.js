@@ -15,10 +15,17 @@ module.exports = {
             
         ]
     },
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
         })
-    ]
+    ],
+    node: {
+        fs: 'empty'
+      }
 }
