@@ -1,11 +1,10 @@
 
-
 function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
     let userUrl = document.getElementById('name').value
-    // Client.checkForName(formText)
+    Client.checkForURL(userUrl);
     document.getElementById('submitBtn').addEventListener('click', async()=>{
         const apiKey= await getApiKey();
             getData(baseUrl,apiKey,userUrl)
