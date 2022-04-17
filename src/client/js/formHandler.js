@@ -4,7 +4,11 @@ function handleSubmit(event) {
 
     // check what text was put into the form field
     let userUrl = document.getElementById('name').value
-    Client.checkForURL(userUrl);
+    if(Client.checkForURL(userUrl)){
+        alert("URL is valid")
+    }else{
+        alert("URL not Valid")
+    }
     document.getElementById('submitBtn').addEventListener('click', async()=>{
         const apiKey= await getApiKey();
             getData(baseUrl,apiKey,userUrl)
